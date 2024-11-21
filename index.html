@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarama Devam Ediyor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+        }
+
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tarama Devam Ediyor...</h1>
+    <div class="message">Lütfen bekleyin, işlemler arka planda devam etmektedir...</div>
+
+    <script>
+        let isPageActive = true;
+
+        // Sayfa aktifken tarama devam eder
+        function startScanning() {
+            console.log("Tarama işlemi başlatıldı.");
+        }
+
+        // Sayfa inaktif olduğunda taramayı durdur
+        function stopScanning() {
+            console.log("Tarama işlemi durduruldu.");
+        }
+
+        // Sayfa yüklendiğinde tarama başlar
+        document.addEventListener("DOMContentLoaded", function() {
+            if (isPageActive) {
+                startScanning();
+            }
+        });
+
+        // Sayfa aktif olduğunda tarama devam eder
+        window.onfocus = function() {
+            if (!isPageActive) {
+                isPageActive = true;
+                startScanning();
+            }
+        };
+
+        // Sayfa inaktif olduğunda tarama durur
+        window.onblur = function() {
+            if (isPageActive) {
+                isPageActive = false;
+                stopScanning();
+            }
+        };
+    </script>
+</body>
+</html>
